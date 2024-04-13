@@ -1,12 +1,10 @@
-package org.example;
+package org.example.client;
 
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 
 import static javax.xml.bind.annotation.XmlAccessType.FIELD;
 
-//@XmlType(propOrder={"title", "book", "count", "testData"})
 @XmlAccessorType(FIELD)
 public class Pos {
     @XmlElement(name = "Source", namespace="http://www.opentravel.org/OTA/2003/05")

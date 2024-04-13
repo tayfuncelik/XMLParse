@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.client.HotelAvai;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;

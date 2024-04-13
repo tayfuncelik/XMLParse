@@ -1,16 +1,15 @@
-package org.example;
+package org.example.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-@XmlAccessorType(XmlAccessType.FIELD)
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class StayDateRange {
 
     @XmlAttribute(name = "End")
-    String end;
-
+    private String end;
     @XmlAttribute(name = "Start")
-    String start;
+    private String start;
 
 }
