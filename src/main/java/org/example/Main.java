@@ -36,30 +36,28 @@ import static org.example.common.Marchaller.addToHeader;
 
 public class Main {
 
-    public static void main(String[] args) throws URISyntaxException {
-
-
-        // first check to see if the program was run with the command line argument
-        if (args.length < 1) {
-            System.out.println("Error choose inputfile");
-            System.exit(1);
-        }
-
-        DATE_TIME_FORMATTER.setTimeZone(TimeZone.getTimeZone("UTC"));   // This line converts the given date into UTC time zone
+    public static void main(String[] args){
+        DATE_TIME_FORMATTER.setTimeZone(TimeZone.getTimeZone("UTC"));
+        isArgsValid(args);
 
         try {
             String inputXMLFile = args[0];//"input.xml"
             String outputXMLFile = args[1];
-         /*   URL resource = Main.class.getClassLoader().getResource("input.xml");
+            InputStream resource = Main.class.getClassLoader().getResourceAsStream(inputXMLFile);
             if (resource == null) {
                 throw new IllegalArgumentException("file not found!");
-            }*/
-            File file = new File(inputXMLFile);//resource.toURI().getPath()
-            JAXBContext jaxbContext = JAXBContext.newInstance(HotelAvai.class);
+            }
 
+            /*
+            URL resource = Main.class.getClassLoader().getResource("input.xml");
+            if (resource == null) {
+                throw new IllegalArgumentException("file not found!");
+            }
+            File file = new File(resource.toURI().getPath());*/
+            JAXBContext jaxbContext = JAXBContext.newInstance(HotelAvai.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            HotelAvai hotelAvai = (HotelAvai) jaxbUnmarshaller.unmarshal(file);
-            writeToFile(hotelAvai,outputXMLFile);
+            HotelAvai hotelAvai = (HotelAvai) jaxbUnmarshaller.unmarshal(resource);
+            writeToFile(hotelAvai, outputXMLFile);
 
             System.out.println("\n____completed_____");
 
@@ -72,7 +70,14 @@ public class Main {
         }
     }
 
-    public static void writeToFile(HotelAvai hotel,String outputXMLFile) throws SOAPException, JAXBException, IOException {
+    private static void isArgsValid(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Error choose inputfile");
+            System.exit(1);
+        }
+    }
+
+    public static void writeToFile(HotelAvai hotel, String outputXMLFile) throws SOAPException, JAXBException, IOException {
         XMLDefinition xmlDefinition = new XMLDefinition();
         //SET HEADER
         addToHeader(new MessageID(UUID.randomUUID().toString()), xmlDefinition.getHeader());
