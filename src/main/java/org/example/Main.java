@@ -17,8 +17,6 @@ import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPHeader;
 import java.io.*;
 import java.math.BigInteger;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
@@ -36,7 +34,7 @@ import static org.example.common.Marchaller.addToHeader;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         DATE_TIME_FORMATTER.setTimeZone(TimeZone.getTimeZone("UTC"));
         isArgsValid(args);
 
@@ -58,9 +56,7 @@ public class Main {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             HotelAvai hotelAvai = (HotelAvai) jaxbUnmarshaller.unmarshal(resource);
             writeToFile(hotelAvai, outputXMLFile);
-
             System.out.println("\n____completed_____");
-
         } catch (JAXBException e) {
             e.printStackTrace();
         } catch (SOAPException e) {
