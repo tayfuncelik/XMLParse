@@ -1,4 +1,4 @@
-package org.example.client;
+package org.example.client.header;
 
 import javax.xml.bind.annotation.*;
 
@@ -9,6 +9,14 @@ public class RequestorOption {
     private String name;
     @XmlAttribute(name = "Value")
     private String value;
+
+    public RequestorOption() {
+    }
+
+    public RequestorOption(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
 
     public String getName() {
         return name;

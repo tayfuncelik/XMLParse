@@ -1,27 +1,30 @@
-package org.example.client;
+package org.example.client.body;
 
-//import jakarta.xml.bind.annotation.XmlElement;
-//import jakarta.xml.bind.annotation.XmlRootElement;
-
-
-import org.example.NameSpaces;
-
+import org.example.client.header.Pos;
+import org.example.common.NameSpaces;
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 
-@XmlRootElement(name="OTA_HotelAvailRQ", namespace= NameSpaces.NS)
+@XmlRootElement(name = "OTA_HotelAvailRQ", namespace = NameSpaces.NS)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HotelAvai implements Serializable {
     @XmlAttribute(name = "RequestedCurrency")
     private String requestedCurrency;
-    @XmlElement(name = "POS",  namespace =NameSpaces.NS)
+    @XmlAttribute(name = "PrimaryLangID")
+    private String primaryLangID;
+    @XmlElement(name = "POS", namespace = NameSpaces.NS)
     private Pos pos;
-    @XmlElement(name = "AvailRequestSegments", namespace =NameSpaces.NS)
+    @XmlElement(name = "AvailRequestSegments", namespace = NameSpaces.NS)
     private AvailRequestSegments availRequestSegments;
 
-    public HotelAvai(){}
-    public HotelAvai(Pos pos) {
+    public HotelAvai() {
+    }
+
+    public HotelAvai(String requestedCurrency, String primaryLangID, Pos pos, AvailRequestSegments availRequestSegments) {
+        this.requestedCurrency = requestedCurrency;
+        this.primaryLangID = primaryLangID;
         this.pos = pos;
+        this.availRequestSegments = availRequestSegments;
     }
 
     public String getRequestedCurrency() {
@@ -30,6 +33,14 @@ public class HotelAvai implements Serializable {
 
     public void setRequestedCurrency(String requestedCurrency) {
         this.requestedCurrency = requestedCurrency;
+    }
+
+    public String getPrimaryLangID() {
+        return primaryLangID;
+    }
+
+    public void setPrimaryLangID(String primaryLangID) {
+        this.primaryLangID = primaryLangID;
     }
 
     public Pos getPos() {

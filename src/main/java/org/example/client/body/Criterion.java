@@ -1,6 +1,6 @@
-package org.example.client;
+package org.example.client.body;
 
-import org.example.NameSpaces;
+import org.example.common.NameSpaces;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -12,4 +12,19 @@ import javax.xml.bind.annotation.XmlType;
 public class Criterion {
     @XmlElement(name = "HotelRef", namespace = NameSpaces.NS)
     private HotelRef hotelRef;
+
+    public Criterion() {
+    }
+
+    public Criterion(HotelRef hotelRef) {
+        this.hotelRef = hotelRef;
+    }
+
+    public HotelRef getHotelRef() {
+        return hotelRef;
+    }
+
+    public void setHotelRef(HotelRef hotelRef) {
+        this.hotelRef = hotelRef;
+    }
 }
