@@ -66,7 +66,7 @@ public class Main {
         }
     }
 
-    private static void isArgsValid(String[] args) {
+    public static void isArgsValid(String[] args) {
         if (args.length < 1) {
             System.out.println("Error choose inputfile");
             System.exit(1);
@@ -109,7 +109,7 @@ public class Main {
         //System.out.println("total child:" + sumChild(guestList));
     }
 
-    private static Integer sumChild(List<Guest> guestList) {
+    public static Integer sumChild(List<Guest> guestList) {
         return guestList.stream()
                 .mapToInt(i -> i.getChildCount())
                 .sum();
